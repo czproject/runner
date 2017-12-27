@@ -1,6 +1,17 @@
 
 # CzProject\Runner
 
+## Installation
+
+[Download a latest package](https://github.com/czproject/runner/releases) or use [Composer](http://getcomposer.org/):
+
+```
+composer require czproject/runner
+```
+
+`CzProject\Runner` requires PHP 5.3.0 or later.
+
+
 ## Usage
 
 ``` php
@@ -26,19 +37,6 @@ $result->getCode();
 $result->getOutput();
 
 ```
-
-
-Installation
-------------
-
-[Download a latest package](https://github.com/czproject/runner/releases) or use [Composer](http://getcomposer.org/):
-
-```
-composer require [--dev] czproject/runner
-```
-
-`CzProject\Runner` requires PHP 5.3.0 or later.
-
 
 ------------------------------
 
