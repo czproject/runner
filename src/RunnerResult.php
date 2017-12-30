@@ -65,6 +65,15 @@
 
 
 		/**
+		 * @return bool
+		 */
+		public function hasOutput()
+		{
+			return !empty($this->output);
+		}
+
+
+		/**
 		 * @return string
 		 */
 		public function toText()
