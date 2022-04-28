@@ -10,10 +10,18 @@
 		/** @var string */
 		private $directory;
 
+		/** @var bool */
+		private $mergeOutputs;
 
-		public function __construct($directory)
+
+		/**
+		 * @param string $directory
+		 * @param bool $mergeOutputs
+		 */
+		public function __construct($directory, $mergeOutputs = TRUE)
 		{
 			$this->directory = PathHelper::absolutizePath($directory);
+			$this->mergeOutputs = $mergeOutputs;
 		}
 
 
@@ -42,7 +50,7 @@
 				$cmd = $this->processCommand((array) $command);
 			}
 
-			exec($cmd . ' 2>&1', $output, $returnCode);
+			exec($cmd . ($this->mergeOutputs ? ' 2>&1' : ''), $output, $returnCode);
 			chdir($cwd);
 			return new RunnerResult($cmd, $returnCode, $output);
 		}
