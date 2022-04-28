@@ -7,21 +7,24 @@
 
 	class Runner
 	{
+		const MERGE_OUTPUTS = 0;
+		const ERR_DEV_NULL = 1;
+
 		/** @var string */
 		private $directory;
 
-		/** @var bool */
-		private $mergeOutputs;
+		/** @var int */
+		private $outputHandling;
 
 
 		/**
 		 * @param string $directory
-		 * @param bool $mergeOutputs
+		 * @param int $outputHandling
 		 */
-		public function __construct($directory, $mergeOutputs = TRUE)
+		public function __construct($directory, $outputHandling = self::MERGE_OUTPUTS)
 		{
 			$this->directory = PathHelper::absolutizePath($directory);
-			$this->mergeOutputs = $mergeOutputs;
+			$this->outputHandling = $outputHandling;
 		}
 
 
@@ -50,7 +53,7 @@
 				$cmd = $this->processCommand((array) $command);
 			}
 
-			exec($cmd . ($this->mergeOutputs ? ' 2>&1' : ''), $output, $returnCode);
+			exec($cmd . ' ' . $this->generateOutputHandler(), $output, $returnCode);
 			chdir($cwd);
 			return new RunnerResult($cmd, $returnCode, $output);
 		}
@@ -111,5 +114,21 @@
 			}
 
 			return "$programName " . implode(' ', $cmd);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		private function generateOutputHandler()
+		{
+			if ($this->outputHandling === self::MERGE_OUTPUTS) {
+				return '2>&1';
+
+			} elseif ($this->outputHandling === self::ERR_DEV_NULL) {
+				return '&2>/dev/null';
+			}
+
+			throw new Exception('Invalid output handling mode ' . $this->outputHandling);
 		}
 	}
