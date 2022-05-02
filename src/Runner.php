@@ -126,7 +126,7 @@
 				return '2>&1';
 
 			} elseif ($this->outputHandling === self::ERR_DEV_NULL) {
-				return '&2>/dev/null';
+				return '2>/dev/null';
 			}
 
 			throw new Exception('Invalid output handling mode ' . $this->outputHandling);
