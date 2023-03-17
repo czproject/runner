@@ -1,5 +1,9 @@
-
 # CzProject\Runner
+
+[![Build Status](https://github.com/czproject/runner/workflows/Build/badge.svg)](https://github.com/czproject/runner/actions)
+[![Downloads this Month](https://img.shields.io/packagist/dm/czproject/runner.svg)](https://packagist.org/packages/czproject/runner)
+[![Latest Stable Version](https://poser.pugx.org/czproject/runner/v/stable)](https://github.com/czproject/runner/releases)
+[![License](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://github.com/czproject/runner/blob/master/license.md)
 
 <a href="https://www.janpecha.cz/donate/"><img src="https://buymecoffee.intm.org/img/donate-banner.v1.svg" alt="Donate" height="100"></a>
 
