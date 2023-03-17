@@ -29,8 +29,8 @@
 
 
 		/**
-		 * @param  string|string[]
-		 * @param  string|NULL
+		 * @param  string|string[] $command
+		 * @param  string|NULL $subdirectory
 		 * @return RunnerResult
 		 */
 		public function run($command, $subdirectory = NULL)
@@ -42,6 +42,11 @@
 			}
 
 			$cwd = getcwd();
+
+			if ($cwd === FALSE) {
+				throw new \CzProject\Runner\Exception('Getting of current working directory failed.');
+			}
+
 			chdir($directory);
 
 			$cmd = NULL;
@@ -60,7 +65,7 @@
 
 
 		/**
-		 * @param  string|NULL
+		 * @param  string|NULL $subdirectory
 		 * @return string
 		 */
 		public function getDirectory($subdirectory = NULL)
@@ -76,7 +81,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $argument
 		 * @return string
 		 */
 		public function escapeArgument($argument)
@@ -92,14 +97,18 @@
 		 *   '--bare',
 		 *   'value'
 		 * ]
-		 * @param  array
+		 * @param  array<int|string, string|bool> $args
 		 * @return string
 		 */
 		protected function processCommand(array $args)
 		{
+			if (count($args) === 0) {
+				throw new \CzProject\Runner\Exception('Missing arguments.');
+			}
+
 			$cmd = array();
 
-			$programName = $this->escapeArgument(array_shift($args));
+			$programName = $this->escapeArgument((string) array_shift($args));
 
 			foreach ($args as $opt => $arg) {
 				if (is_string($opt)) {

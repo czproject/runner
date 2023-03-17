@@ -16,9 +16,9 @@
 
 
 		/**
-		 * @param  string
-		 * @param  int
-		 * @param  string[]
+		 * @param  string $command
+		 * @param  int $code
+		 * @param  string[] $output
 		 */
 		public function __construct($command, $code, array $output)
 		{
