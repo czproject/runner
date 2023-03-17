@@ -106,7 +106,7 @@
 				throw new \CzProject\Runner\Exception('Missing arguments.');
 			}
 
-			$cmd = array();
+			$cmd = [];
 
 			$programName = $this->escapeArgument((string) array_shift($args));
 
