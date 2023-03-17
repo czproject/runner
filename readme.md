@@ -11,7 +11,7 @@
 composer require czproject/runner
 ```
 
-`CzProject\Runner` requires PHP 5.3.0 or later.
+`CzProject\Runner` requires PHP 5.6.0 or later.
 
 
 ## Usage
