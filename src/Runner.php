@@ -99,7 +99,7 @@
 		 *   '--bare',
 		 *   'value'
 		 * ]
-		 * @param  array<int|string, string|bool> $args
+		 * @param  array<int|string, string|bool|NULL> $args
 		 * @return string
 		 */
 		protected function processCommand(array $args)
@@ -119,7 +119,7 @@
 					}
 				}
 
-				if (!is_bool($arg)) {
+				if (!is_bool($arg) && $arg !== NULL) {
 					$cmd[] = $this->escapeArgument($arg);
 				}
 			}
