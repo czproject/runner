@@ -75,7 +75,7 @@
 			$directory = $this->directory;
 
 			if ($subdirectory !== NULL) {
-				$directory = rtrim($directory . '/' . PathHelper::absolutizePath($subdirectory, NULL), '/');
+				$directory = rtrim($directory . '/' . PathHelper::absolutizePath($subdirectory, ''), '/');
 			}
 
 			return $directory;
