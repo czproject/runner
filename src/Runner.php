@@ -31,7 +31,7 @@
 
 
 		/**
-		 * @param  string|array<int|string, string|bool|NULL> $command
+		 * @param  string|array<int|string, scalar|\Stringable> $command
 		 * @param  string|NULL $subdirectory
 		 * @return RunnerResult
 		 */
@@ -99,7 +99,7 @@
 		 *   '--bare',
 		 *   'value'
 		 * ]
-		 * @param  array<int|string, string|bool|NULL> $args
+		 * @param  array<int|string, scalar|\Stringable|bool|NULL> $args
 		 * @return string
 		 */
 		protected function processCommand(array $args)
@@ -120,7 +120,7 @@
 				}
 
 				if (!is_bool($arg) && $arg !== NULL) {
-					$cmd[] = $this->escapeArgument($arg);
+					$cmd[] = $this->escapeArgument((string) $arg);
 				}
 			}
 
