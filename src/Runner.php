@@ -31,7 +31,7 @@
 
 
 		/**
-		 * @param  string|string[] $command
+		 * @param  string|array<int|string, string|bool|NULL> $command
 		 * @param  string|NULL $subdirectory
 		 * @return RunnerResult
 		 */
